@@ -109,7 +109,7 @@ describe("ConferenceForm", () => {
   });
 
   it("displays an error banner when state has an error", () => {
-    vi.mocked(useActionState).mockReturnValueOnce([{ error: "Conference name is required." }, mockAction]);
+    vi.mocked(useActionState).mockReturnValueOnce([{ error: "Conference name is required." }, mockAction, false]);
 
     render(
       <ConferenceForm

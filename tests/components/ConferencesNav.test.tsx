@@ -72,7 +72,7 @@ describe("ConferencesNav", () => {
       push: mockPush,
       replace: vi.fn(),
       back: vi.fn(),
-    } as ReturnType<typeof useRouter>);
+    } as unknown as ReturnType<typeof useRouter>);
 
     render(<ConferencesNav conferences={CONFERENCES} />);
     await userEvent.click(screen.getByRole("button", { name: /conferences/i }));
