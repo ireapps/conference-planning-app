@@ -31,7 +31,7 @@ function LoginContent() {
           <h1 className="text-2xl font-semibold tracking-tight text-gray-900">
             Conference Planner
           </h1>
-          <p className="mt-2 text-sm text-gray-500">
+          <p className="mt-2 text-sm text-gray-700">
             Sign in with your organization account to continue.
           </p>
         </div>
@@ -44,7 +44,7 @@ function LoginContent() {
 
         <button
           onClick={signInWithGoogle}
-          className="flex w-full items-center justify-center gap-3 rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm font-medium text-gray-700 shadow-sm transition hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+          className="flex w-full items-center justify-center gap-3 rounded-lg border border-gray-400 bg-white px-4 py-3 text-sm font-medium text-gray-800 shadow-sm transition hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
         >
           <GoogleIcon />
           Sign in with Google

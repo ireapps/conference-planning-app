@@ -74,7 +74,7 @@ create table speakers (
 
 -- ── Sessions ─────────────────────────────────────────────────
 create table sessions (
-  id                 integer  not null,  -- Sessionize integer ID
+  id                 text     not null,  -- Sessionize ID (integer or UUID depending on event)
   conference_id      uuid     not null references conferences (id) on delete cascade,
   title              text     not null,
   description        text,
@@ -94,7 +94,7 @@ create table sessions (
 
 -- ── Session ↔ Speaker ────────────────────────────────────────
 create table session_speakers (
-  session_id    integer  not null,
+  session_id    text     not null,
   speaker_id    text     not null,
   conference_id uuid     not null references conferences (id) on delete cascade,
   primary key (session_id, speaker_id, conference_id),
@@ -104,7 +104,7 @@ create table session_speakers (
 
 -- ── Session ↔ Category item ──────────────────────────────────
 create table session_category_items (
-  session_id       integer  not null,
+  session_id       text     not null,
   category_item_id integer  not null,
   conference_id    uuid     not null references conferences (id) on delete cascade,
   primary key (session_id, category_item_id, conference_id),
