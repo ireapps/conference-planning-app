@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type check
+        run: npx tsc --noEmit
+
+      - name: Lint
+        run: npx next lint
+
+      - name: Build
+        run: npm run build
+        env:
+          # Provide placeholder values so the build doesn't fail on missing env vars.
+          # Real secrets live in Vercel; these are only used for the CI build check.
+          NEXT_PUBLIC_SUPABASE_URL: https://placeholder.supabase.co
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: placeholder-anon-key
+          NEXT_PUBLIC_GOOGLE_WORKSPACE_DOMAIN: example.org
+          GOOGLE_WORKSPACE_DOMAIN: example.org
+          SESSIONIZE_API_URL: https://sessionize.com/api/v2/placeholder/view/All
+          SYNC_SECRET: placeholder-secret
